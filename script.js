@@ -2,7 +2,7 @@ const ethers = require("ethers");
 const zlib = require('zlib');
 
 const apiKey = process.env.ALCHEMY_KEY;
-console.log(apiKey);
+//console.log(apiKey);
 const provider = new ethers.JsonRpcProvider(`https://opt-mainnet.g.alchemy.com/v2/${apiKey}`);
 
 const contract = new ethers.Contract("0x2EF5fb9E8C1e05097061707D0db8355a6f375083", ["function getText() external view returns (bytes memory)"], provider);
@@ -11,7 +11,7 @@ const fromHexString = (hexString) =>
 
 (async function () {
     const result = await contract.getText();
-    console.log(result);
+    //console.log(result);
     const output = fromHexString(result.substring(2));
     zlib.unzip(output, (err, unzippedBuffer) => {
         if (!err) {
